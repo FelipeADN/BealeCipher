@@ -1,0 +1,27 @@
+Beale.c: contem a main, e a lógica para os argumentos de linha de comando.
+
+codificarMensagem.c: possui três funções, que juntas realizam a codificação da codificarMensagem.
+    selecionaIndice(): escolhe qual chave da lista vai utilizar usando rand.
+    passouSaidaCodificar(): caso o usuário tenha passado saída com -o, utiliza o nome passado, se não utiliza um nome padrão.
+    codificarMensagem(): realiza a codificação da mensagem em si usando as outras funções.
+
+decodificarMensagem.c: muito parecido com codificar mensagem, e é quem realiza a decodificação da mensagem.
+    passouSaidaDecodificar(): define o nome do arquivo de saída, caso o usuário tenha passado-o ou não.
+    encontrarCharacter(): busca a chave e retorna o caractere equivalente.
+    decodificarMensagem(): realiza e organiza a decodificação usando as outras funções.
+
+gerarChaves.c: Arquivo com várias funções, e basicamente é quem cuida da geração de chaves e das listas que guardam as chaves.
+    inicializarListas(): inicializa e aloca um vetor de listas dinâmicas, cada lista guarda as chaves para uma determinada letra. E o vetor guarda essas listas.
+    criaChaves(): popula as listas a partir de um livro.
+    lerChaves(): popula as listas a partir de um arquivo de chaves.
+    guardaChaves(): gera o arquivo de chaves, ou seja, guarda as listas em um arquivo em formato de texto.
+    passouArquivoChaves(): caso tenha sido passado um nome com -c, utiliza-o, se não, o padrão é (chaves.txt)
+    desalocarChaves(): libera a memória que havia sido alocada para as listas.
+
+lista.c: O esqueleto para a estrutura de dados das listas. Esse arquivo controla uma lista dinâmica de um único caractere, guardando suas chaves.
+    criaLista(): Aloca espaço para uma única lista dinâmica.
+    insereValor(): insere um inteiro no final da lista dinâmica.
+    liberaLista(): libera a memória utilizada por uma única lista.
+
+Explicação das listas: As listas formam a estrutura de dados que utilizei, que é basicamente um vetor de ponteiros para listas dinâmicas. Cada lista guarda o caractere
+                       representado e as chaves que equivalem ao caractere.
