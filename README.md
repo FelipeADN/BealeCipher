@@ -2,6 +2,25 @@
 This program encrypts and decrypts messages using the book cipher from the second page of the Beale Papers.
 
 # How to use this program
+## Understanding the arguments:
+*{strings} are always text files names*
+### Modes:  
+   + -e = encode  
+   + -d = decode  
+### Encoding:  
+*Either -b or -c is mandatory. -m is mandatory*
+   + -b {string} = uses a book text file as key  
+   + -c {string}:  
+     + when used without -b, uses the specified key file as key
+     + when used with -b, creates a key file from the book -b  
+   + -m {string} = plain text message file to encode  
+### Decoding:
+*Either -b or -c is mandatory. -i is mandatory*
+  + -b {string} = uses a book text file as key
+  + -c {string} = uses a key file as key
+  + -i {string} = encoded message text file to decode
+  + -o {string} = names the file of the decoded message (optional)
+### Examples:
 1. Uses a book as a key, encrypt the *OriginalMessage* into the *CodedMessage* and saves the *KeyFile* in the format described later
 ```
 ./beale -e -b BookCipher -m OriginalMessage -o CodedMessage -c KeysFile 
@@ -25,14 +44,14 @@ According to the legend, the three ciphertexts contain the location of a treasur
 + Each word in the book is counted (starting from 0)
 + The first letter of each word is then represented by their count
 
-Using this text as a book key or book cipher, for example:
+**Using this text as a book key or book cipher, for example:**
 ```
 In the beginning God created the heaven and the earth. And the earth was without form, and void; and darkness was upon
 the face of the deep.
 And the Spirit of God moved upon the face of the waters. And God said, Let there be light: and there was light.
 ```
 
-We would get this keys file:
+**We would get this keys file:**
 ```
 a: 7 10 16 18 27 39 46
 b: 2 44
@@ -52,8 +71,9 @@ u: 21 33
 v: 17
 w: 13 14 20 38 48
 ```
+> *The program will use negative numbers if they are missing from the book*
 
-And from it, we could write something like:
+**And from it, we could write something like:**
 ```
 0 -1 6 0 19 -1 1 6 0 29 -1 32 9 29 29 7 3 9
 ```
